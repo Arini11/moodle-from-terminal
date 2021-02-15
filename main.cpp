@@ -3,11 +3,11 @@
 #include <string>
 #include <ncurses.h>
 #include "menu.h"
-#include "csv/main.cpp"
+#include "json_parse.h"
 
 using namespace std;
 
-int main(int argc, char** argv){
+int main(){
 
 	initscr();
 	noecho();
@@ -21,10 +21,10 @@ int main(int argc, char** argv){
 	box(index, 0, 0);
 
 	Menu menus[4] = {
-		Menu(menus[0], '1'),
-		Menu(menus[1], '2'),
-		Menu(menus[2], '3'),
-		Menu(menus[3], '4'),
+		Menu("ÑAÑ", '1'),
+		Menu("ÑAÑ", '2'),
+		Menu("ÑAÑ", '3'),
+		Menu("ÑAÑ", '4'),
 	};
 
 	MenuBar menubar = MenuBar(index, menus, 4);
@@ -37,5 +37,8 @@ int main(int argc, char** argv){
 	}
 
 	endwin();
+
+	carregar_dades();
+
 	return 0;
 }
