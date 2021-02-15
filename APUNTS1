@@ -1,0 +1,39 @@
+#include <ncurses.h>
+using namespace std;
+
+int main(int argc, char** argv){
+
+	//inicialitzar pantalla 
+	initscr();
+
+	int x,y;
+
+	x = y = 10;
+
+	//moure el cursor a la posició indicada
+	move(y,x);
+
+	//imprimeix una cadena per pantalla
+	printw("PROVA!");
+
+	//refrescar pantalla
+	refresh();
+
+
+	//retorna el valor de la tecla premuda
+	int c = getch();
+
+	//neteja la pantalla
+	clear();
+
+	//mou el cursos, i escriu, tot en un
+	mvprintw(0,0,"%d",c);
+
+
+	getch();
+
+	//tancar ncurses
+	endwin();
+
+	return 0;
+}
