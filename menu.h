@@ -12,7 +12,7 @@ public:
 	std::string text;
 	char trigger;
 
-	Menu(std::string text, char trigger){
+	Menu(Json::string text, char trigger){
 		this->text = text;
 		this->trigger = trigger;
 	}

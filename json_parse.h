@@ -1,3 +1,7 @@
 #pragma once
+#include <jsoncpp/json/json.h>
+#include <jsoncpp/json/value.h>
 
-void carregar_dades();
+using namespace std;
+
+vector<Json::Value> carregar_dades();

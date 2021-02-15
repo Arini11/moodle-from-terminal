@@ -2,11 +2,12 @@
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
 #include <fstream>
+#include <vector>
 #include "json_parse.h"
 
 using namespace std;
 
-void carregar_dades(){
+vector<Json::Value> carregar_dades(){
 
 	ifstream f("dades.json");
 	Json::Value arrel;
@@ -14,5 +15,12 @@ void carregar_dades(){
 	
 	reader.parse(f, arrel);
 
-	cout << arrel["UFs"]["titols"];
+	int length = arrel["UFs"]["titols"].size();
+	vector<Json::Value> titols;
+
+	for(int i=0;i<length;i++){
+		titols.push_back(arrel["UFs"]["titols"][i]);
+	}
+
+	return titols;
 }

@@ -2,12 +2,16 @@
 #include <stdlib.h>
 #include <string>
 #include <ncurses.h>
+#include <vector>
 #include "menu.h"
 #include "json_parse.h"
+#include "json_parse.cpp"
 
 using namespace std;
 
 int main(){
+
+	vector<Json::Value> titols = carregar_dades();
 
 	initscr();
 	noecho();
@@ -21,10 +25,10 @@ int main(){
 	box(index, 0, 0);
 
 	Menu menus[4] = {
-		Menu("ÑAÑ", '1'),
-		Menu("ÑAÑ", '2'),
-		Menu("ÑAÑ", '3'),
-		Menu("ÑAÑ", '4'),
+		Menu(titols[0], '1'),
+		Menu(titols[1], '2'),
+		Menu(titols[2], '3'),
+		Menu(titols[3], '4')
 	};
 
 	MenuBar menubar = MenuBar(index, menus, 4);
@@ -37,8 +41,6 @@ int main(){
 	}
 
 	endwin();
-
-	carregar_dades();
 
 	return 0;
 }
