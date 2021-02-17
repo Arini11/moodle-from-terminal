@@ -10,11 +10,12 @@ public:
 
 	int start_y;
 	std::string text;
-	char trigger;
 
-	Menu(Json::string text, char trigger){
+	Menu(){
+	}
+
+	Menu(std::string text){
 		this->text = text;
-		this->trigger = trigger;
 	}
 
 };
@@ -32,7 +33,7 @@ public:
 		this->win = win;
 		this->menus = menus;
 		this->num_menus = num_menus;
-		this->selected_menu = -1;
+		this->selected_menu = 0;
 
 		int curr_pos = 1;
 
@@ -56,11 +57,12 @@ public:
 		}
 	}
 
-	void handleTrigger(char trigger){
-		for(int i=0;i<num_menus;i++){
-			if(trigger == this->menus[i].trigger)
-				selected_menu = i;
-		}
+	void handleTrigger(int trigger){
+			if(trigger == 111)
+				selected_menu--;
+
+			if(trigger == 116)
+				selected_menu++;
 	}
 
 };

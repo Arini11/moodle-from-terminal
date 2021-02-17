@@ -11,7 +11,9 @@ using namespace std;
 
 int main(){
 
-	vector<Json::Value> titols = carregar_dades();
+	vector<string> titols = carregar_dades();
+
+	int length = titols.size();
 
 	initscr();
 	noecho();
@@ -24,19 +26,18 @@ int main(){
 	WINDOW * index = newwin(height, width, start_y, start_x); 
 	box(index, 0, 0);
 
-	Menu menus[4] = {
-		Menu(titols[0], '1'),
-		Menu(titols[1], '2'),
-		Menu(titols[2], '3'),
-		Menu(titols[3], '4')
-	};
+	Menu menus[length] = {Menu()};
+	
+	for(int i=0;i<length;i++){
+		menus[i] = Menu(titols[i]);
+	}
 
-	MenuBar menubar = MenuBar(index, menus, 4);
+	MenuBar menubar = MenuBar(index, menus, length);
 	menubar.draw();
 
-	char ch;
-	while(ch = wgetch(index)){
-		menubar.handleTrigger(ch);
+	int c;
+	while(c = wgetch(index)){
+		//menubar.handleTrigger(c);
 		menubar.draw();
 	}
 

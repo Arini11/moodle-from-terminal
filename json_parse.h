@@ -4,4 +4,4 @@
 
 using namespace std;
 
-vector<Json::Value> carregar_dades();
+vector<string> carregar_dades();
