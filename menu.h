@@ -57,12 +57,19 @@ public:
 		}
 	}
 
-	void handleTrigger(int trigger){
-			if(trigger == 111)
-				selected_menu--;
 
-			if(trigger == 116)
+	void handleTrigger(int trigger){
+			if(trigger == 107){		// 107 = j
+				selected_menu--;
+				if(selected_menu < 0) // Si surt del límit superior, es restableix la posició a 0
+					selected_menu = 0;
+			}
+
+			if(trigger ==106 && trigger){ //106 = k
 				selected_menu++;
+				if(selected_menu > num_menus-1) // Si surt del límit inferior, es restableix a l'última posició
+					selected_menu = num_menus-1;
+			}
 	}
 
 };

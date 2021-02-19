@@ -18,27 +18,35 @@ int main(){
 	initscr();
 	noecho();
 	curs_set(0);
+	keypad(stdscr, TRUE);
 
 	int height, width, start_y, start_x;
 	start_y = start_x = 0;
 
 	getmaxyx(stdscr, height, width);
-	WINDOW * index = newwin(height, width, start_y, start_x); 
-	box(index, 0, 0);
+	WINDOW * win1 = newwin(height, width, start_y, start_x); 
+	WINDOW * win2 = newwin(height, width, start_y, start_x); 
+	box(win1, 0, 0);
 
-	Menu menus[length] = {Menu()};
-	
+	// ARRAY MENUS1
+	Menu menus1[length] = {Menu()};
 	for(int i=0;i<length;i++){
-		menus[i] = Menu(titols[i]);
+		menus1[i] = Menu(titols[i]);
 	}
+	Menu menus2[length] = {Menu()};
+	for(int i=0;i<length;i++){
+		menus1[i] = Menu(titols[i]);
+	}
+	// ARRAY MENUS2
 
-	MenuBar menubar = MenuBar(index, menus, length);
-	menubar.draw();
+	MenuBar menu1 = MenuBar(win1, menus1, length);
+	MenuBar menu2 = MenuBar(win2, menus2, length);
+	menu1.draw();
 
 	int c;
-	while(c = wgetch(index)){
-		//menubar.handleTrigger(c);
-		menubar.draw();
+	while(c = wgetch(win1)){
+		menu1.handleTrigger(c);
+		menu1.draw();
 	}
 
 	endwin();
