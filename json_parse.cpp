@@ -7,7 +7,7 @@
 
 using namespace std;
 
-vector<string> carregar_dades(){
+void carregar_dades(){
 
 	ifstream f("dades.json");
 	Json::Value arrel;
@@ -16,11 +16,18 @@ vector<string> carregar_dades(){
 	reader.parse(f, arrel);
 
 	int length = arrel["UFs"]["titols"].size();
-	vector<string> titols;
+	//vector<string> titols;
 
-	for(int i=0;i<length;i++){
-		titols.push_back(arrel["UFs"]["titols"][i].toStyledString());
-	}
+	// for(int i=0;i<length;i++){
+		//titols.push_back(arrel["UFs"]["titols"][i].asString());
+	//cout << ("%s",arrel["UFs"]["titols"][0]);
+	string prove;
+	prove = arrel["UFs"]["titols"][0].toStyledString();
+	printf("%s\n",prove.c_str());
+	// }
+}
 
-	return titols;
+int main(){
+	carregar_dades();
+	return 0;
 }
